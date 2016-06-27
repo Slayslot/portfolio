@@ -15,5 +15,6 @@ app.controller('home-controller', ['$scope', function($scope) {
     }
     $scope.eatthis=thisisme[thisismeiterator];
     $scope.$apply();
+    $('.thisisme').animateCss('fadeIn');
   },3000);
 }]);
