@@ -2,6 +2,11 @@ $icon-font-path: '../fonts/';
 $background-color: #000;
 $text-color:#fff;
 $mobile-width: 320px;
+$mobile-width-2: 360px;
+$button-min-width:434px;
+$tablet-width: 768px;
+$desktop-width: 980px;
+$mobile-height: 550px;
 @mixin child-delay($delay){
   -webkit-transition-delay: $delay;
   transition-delay: $delay;
@@ -15,6 +20,26 @@ $mobile-width: 320px;
   transition: transform 0.3s, opacity 0.3s;
   -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+@mixin media-min-width($width){
+  @media(min-width: $width){
+    @content;
+  }
+}
+@mixin media-max-width($width){
+  @media(max-width: $width){
+    @content;
+  }
+}
+@mixin media-min-height($height){
+  @media (min-height: $height){
+    @content;
+  }
+}
+@mixin media-max-height($height){
+  @media (max-height: $height){
+    @content;
+  }
 }
 //fonts
 @import 'https://fonts.googleapis.com/css?family=Exo+2';
@@ -42,11 +67,36 @@ $mobile-width: 320px;
   margin-bottom: 0.1em;
   font-family: 'Exo 2', sans-serif;
   font-weight: 900;
+  @include media-min-width($mobile-width){
+    font-size: 2.8em;
+    margin-bottom: 0.2em;
+  }
+  @include media-min-width($mobile-width-2){
+    font-size: 3.3em;
+    margin-bottom: 0.3em;
+  }
+  @include media-min-width($tablet-width){
+    font-size: 7em;
+    margin-bottom: 0.2em;
+  }
+  @include media-min-width($desktop-width){
+    font-size: 8em;
+  }
 }
 .mybrief{
   color:$text-color;
   font-size: 2em;
   margin-bottom: 3em;
+  @include media-min-width($mobile-width){
+    font-size:1em;
+    margin-bottom: 2em;
+  }
+  @include media-min-width($tablet-width){
+    font-size:2em;
+  }
+  @include media-min-width($desktop-width){
+    margin-bottom: 3em;
+  }
 }
 .thisisme{
   font-family: 'Exo 2', sans-serif;
@@ -54,14 +104,29 @@ $mobile-width: 320px;
 }
 /* Contact me */
 .contact-me{
-  position: absolute;
-  right: 43px;
   bottom: 29px;
 }
 .cv-me{
+  top: 29px;
+  @include media-min-width($mobile-width){
+    bottom:60px;
+    top:auto;
+  }
+  @include media-min-width($tablet-width){
+    top: 29px;
+    bottom:auto;
+  }
+}
+.contact-me,.cv-me{
   position: absolute;
   right: 43px;
-  top: 29px;
+}
+@media(min-width: $mobile-width) and (max-width: #{$tablet-width - 1px}) {
+  .contact-me,.cv-me{
+    right:0;
+    left:0;
+    font-size:0.7em;
+  }
 }
 .contact-me-text,.cv-me-text{
   text-transform: uppercase;
@@ -80,6 +145,20 @@ $mobile-width: 320px;
     font-size: 1.8em;
     right: 0.2em;
     top: 0.25em;
+    @include media-min-width($mobile-width){
+      display: none;
+    }
+    @include media-min-width($tablet-width){
+      display: unset;
+    }
+  }
+  @include media-min-width($mobile-width){
+    text-decoration: underline;
+    letter-spacing: 4px;
+  }
+  @include media-min-width($tablet-width){
+    text-decoration: none;
+    letter-spacing:6px;
   }
 }
 /* Common button styles */
@@ -184,35 +263,17 @@ $mobile-width: 320px;
         }
       }
   }
-}
-
-@media(max-width: $mobile-width){
-  .myname{
-    font-size: 2.1em;
-    margin-bottom: 0.2em;
-  }
-  .mybrief{
-    font-size:1em;
-    margin-bottom: 2em;
-  }
-  .button--nina{
+  @include media-min-width($mobile-width){
     margin-right:0;
     margin-bottom: 1em;
   }
-  .contact-me,.cv-me{
-    right:0;
-    left:0;
-    font-size:0.7em;
+  @include media-min-height($mobile-height){
+    margin-bottom: 2em;
   }
-  .cv-me{
-    bottom:60px;
-    top:auto;
+  @include media-min-width($button-min-width){
+    margin-bottom:0;
   }
-  .contact-me-text,.cv-me-text{
-    text-decoration: underline;
-    letter-spacing: 4px;
-    span{
-      display: none;
-    }
+  @include media-min-width($tablet-width){
+    margin-right: 2em;
   }
 }

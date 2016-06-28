@@ -2,7 +2,7 @@ var app = angular.module('myPortfolio', ['ngRoute']);
 
 app.config(function ($routeProvider) {
   $routeProvider
-    .when('/', {
+    .when('/intro', {
       templateUrl: 'views/home.html'
     })
     // .when('/events', {
@@ -33,7 +33,7 @@ app.config(function ($routeProvider) {
     //   templateUrl: 'assets/views/newstemplate.html'
     // })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/intro'
     });
 });
 $.fn.extend({
