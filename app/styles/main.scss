@@ -21,6 +21,20 @@ $mobile-height: 550px;
   -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
 }
+@mixin side-title {
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -moz-transition: all .15s ease-out;
+  -o-transition: all .15s ease-out;
+  -webkit-transition: all .15s ease-out;
+  transition: all .15s ease-out;
+}
 @mixin media-min-width($width){
   @media(min-width: $width){
     @content;
@@ -48,11 +62,17 @@ $mobile-height: 550px;
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "../bower_components/animate.css/animate.css";
 // endbower
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Exo 2', helvetica, sans-serif;
+  background: $background-color;
+}
 /* Home */
-#home-container{
+#home-container,#contact-container{
   width:100vw;
   height:100vh;
-  background: $background-color;
 }
 /* Middle Earth*/
 .middle-earth{
@@ -87,6 +107,7 @@ $mobile-height: 550px;
   color:$text-color;
   font-size: 2em;
   margin-bottom: 3em;
+  font-family: 'Exo 2', sans-serif;
   @include media-min-width($mobile-width){
     font-size:1em;
     margin-bottom: 2em;
@@ -101,6 +122,7 @@ $mobile-height: 550px;
 .thisisme{
   font-family: 'Exo 2', sans-serif;
   font-weight: 600;
+  font-size: 1.3em;
 }
 /* Contact me */
 .contact-me{
@@ -276,4 +298,196 @@ $mobile-height: 550px;
   @include media-min-width($tablet-width){
     margin-right: 2em;
   }
+}
+/*Nav*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.hamb {
+  text-decoration: none;
+  color: $text-color;
+  font-size: 3em;
+  margin-right: 1rem;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  position: absolute;
+  &.open {
+    color: $text-color;
+  }
+}
+.nav {
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: $background-color;
+  top: 0;
+  left: 0;
+  a {
+    text-decoration: none;
+    color: $text-color;
+  }
+}
+.right {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.right-inner {
+  float: left;
+  height: 100%;
+  width: 0%;
+  text-align: center;
+  background: lighten($background-color, 18%);
+  margin: 0;
+  padding: 0;
+  li {
+    list-style-type: none;
+    opacity: 0;
+    text-transform: uppercase;
+    font-size: 2em;
+    margin: .5rem 0;
+    &:first-child {
+      margin-top: 5rem;
+    }
+  }
+  hr {
+    width: 2rem;
+    height: .25rem;
+    border: 0;
+    background: $background-color;
+  }
+  .fake-search {
+    height: 2.5rem;
+    width: 11rem;
+    background: $background-color;
+    margin: 1rem auto;
+    cursor: text;
+    font-size: .35em;
+    font-family: helvetica, sans-serif;
+    color: darken($text-color, 50%);
+    line-height: 2.5rem;
+    text-align: left;
+    padding-left: .5rem;
+  }
+  .social {
+    color: $text-color;
+  }
+  i {
+    margin: .25rem .35rem;
+    cursor: pointer;
+    color: darken($text-color, 50%);
+    &:hover {
+      color: $text-color;
+    }
+  }
+  .nav-foot {
+    a {
+      margin: 0 1rem;
+      color: darken($text-color, 50%);
+      transition: .25s;
+      font-size: .5em;
+      &:hover {
+        color: $text-color;
+        transition: .25s;
+      }
+    }
+  }
+}
+@media (max-width: 48rem) {
+  html {
+    font-size: 12px;
+  }
+  .right {
+    display: block;
+    float: none;
+    height: 50%;
+    width: 100%;
+  }
+  .right {
+    height: auto;
+  }
+}
+@media (max-width: 30rem) {
+  html {
+    font-size: 9px;
+  }
+}
+/* contact.html */
+.contactmeMail,.contactmeAddress,.contactmeTelephone{
+  color: $text-color;
+  opacity: 1;
+  transition: opacity 150ms ease-out;
+  -webkit-transition: opacity 150ms ease-out;
+  &:hover{
+    opacity: .7;
+    color: $text-color;
+  }
+}
+.contactmeMail{
+    font-size: 5em;
+    text-decoration: underline;
+    @include media-min-width($mobile-width){
+      font-size: 1.8em;
+    }
+    @include media-min-width($mobile-width-2){
+      font-size: 2.1em;
+    }
+    @include media-min-width($tablet-width){
+      font-size: 4.6em;
+    }
+}
+.contactmeAddress,.contactmeTelephone{
+  font-size:1.5em;
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+  p{
+    line-height: 1em;
+    &:nth-child(1){
+      margin-top: 1.5em;
+    }
+  }
+  @include media-min-width($mobile-width){
+    font-size: 1em;
+  }
+  @include media-min-width($mobile-width-2){
+    font-size: 1.3em;
+  }
+  @include media-max-width($tablet-width){
+    font-size: 1.5em;
+  }
+}
+.glyphicon-arrow-right{
+  position: relative;
+  left: 7px;
+}
+.page-side-title{
+  position: fixed;
+  bottom: 30px;
+  left: 50px;
+  z-index: 101;
+  width: 500px;
+  height: 30px;
+  margin: 0;
+  color: $text-color;
+  text-align: left;
+  @include side-title;
+  font-size: 1.3em;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  @include media-max-width($tablet-width){
+    display: none;
+  }
+  @include media-max-height($tablet-width){
+    display: none;
+  }
+// }
+// @media (max-width: 768px) and (max-height: 768px){
+//   .page-side-title{
+//     display:none;
+//   }
 }
