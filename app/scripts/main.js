@@ -7,17 +7,14 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/home.html'
     })
     .when('/contact', {
-      //controller: "ContactController",
       templateUrl: 'views/contact.html'
     })
-		// .when('/gallery', {
-    //   controller: "GalleryController",
-		// 	templateUrl: 'assets/views/gallery.html'
-		// })
-		// .when('/news', {
-    //   controller: 'NewsController',
-		// 	templateUrl: 'assets/views/news.html'
-		// })
+		.when('/about', {
+			templateUrl: 'views/about.html'
+		})
+		.when('/work', {
+			templateUrl: 'views/work.html'
+		})
 		// .when('/register', {
 		// 	templateUrl: 'assets/views/register.html'
 		// })
