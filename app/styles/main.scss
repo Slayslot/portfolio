@@ -64,7 +64,6 @@ $mobile-height: 550px;
 //endfonts
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-@import "../bower_components/animate.css/animate.css";
 // endbower
 html,
 body {
@@ -292,7 +291,7 @@ body {
   margin-right: 1rem;
   top: 0;
   right: 0;
-  z-index: 1;
+  z-index: 101;
   position: absolute;
   &.open {
     color: $text-color;
@@ -305,6 +304,7 @@ body {
   background: $background-color;
   top: 0;
   left: 0;
+  z-index: 100;
   a {
     text-decoration: none;
     color: $text-color;
@@ -523,6 +523,7 @@ body {
 	background-color: rgba(255, 255, 255, 0.3);
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
   a{
     top: auto;
     bottom: 250%;
@@ -532,8 +533,8 @@ body {
     width: auto;
     height: auto;
     border-radius: 0;
-    background-color: #c44d48;
-    color: $text-color;
+    background-color: $text-color;
+    color: $background-color;
     text-indent: 0;
     line-height: 2;
     opacity: 0;
@@ -541,27 +542,9 @@ body {
     transform: translateX(-50%) translateY(-50%);
     -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s ease;
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s ease;
-
-    &:after{
-      position: absolute;
-      left: 100%;
-      width: 0;
-      height: 0;
-      border: solid transparent;
-      border-width: 10px;
-      border-color: transparent;
-      border-top-color: #c44d48;
-      content: '';
-      pointer-events: none;
-      top: 99%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      -webkit-transition: opacity 0.3s ease;
-      transition: opacity 0.3s ease;
-      transform: rotateZ(-90deg);
-      -webkit-transform: rotateZ(-90deg);
-      top: 17%;
-    }
+    min-width: 110px;
+    text-align: center;
+    border-radius: 15%;
   }
   &:hover{
     z-index: 100;
@@ -585,7 +568,7 @@ body {
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: #c44d48;
+      background: $text-color;
       -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
     }
@@ -597,14 +580,15 @@ body {
 	z-index: 100;
 	visibility: visible;
 	opacity: 1;
-	-webkit-transform: translateX(-140%) translateY(150%);
-	transform: translateX(-140%) translateY(150%);
+	-webkit-transform: translateX(-120%) translateY(155%);
+	transform: translateX(-120%) translateY(155%);
 	-webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
 	transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .no-touch .dotstyle-tooltip ul:hover li.current a {
 	opacity: 0.2;
+  text-decoration: none;
 }
 
 .dotstyle-tooltip ul li.current:hover a {

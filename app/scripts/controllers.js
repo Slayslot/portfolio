@@ -1,84 +1,91 @@
 var thisisme = [
-  "Front-end Developer",
-  "UI/UX Developer",
-  "Basketball Player"
+  'Front-end Developer',
+  'UI/UX Developer',
+  'Basketball Player'
 ]
 var thisismeiterator=0;
-function navigation(){
-  // $.Velocity.mock = 2;
-
-  var menuOpen = [{
-    elements: $('.nav'),
-    properties: {
-      height: ['100%', 0],
-      width: ['100%', 0],
-      minHeight: '40rem'
-    },
-    options: {
-      duration: 200
-    }
-  }, {
-    elements: $('.right-inner'),
-    properties: {
-      width: '100%'
-    },
-    options: {
-      duration: 250,
-      complete: function() {
-        $('.right-inner')
-          .find('li').each(function(i) {
-            $(this).velocity({
-              opacity: 1
-            }, {
-              delay: i * 50
-            });
-          })
-      }
-    }
-  }];
-
-  $(document.body).on('click', '.hamb',
-  function() {
-
-    if ($(this).hasClass('open')) {
-      $(this)
-        .removeClass('open')
-        .find('i')
-        .addClass('glyphicon-menu-hamburger')
-        .removeClass('glyphicon-remove');
-
-      $('nav').velocity({
-        height: 0,
-        width: 0,
-        minHeight: 0
-      }, {
-        duration: 250,
-        begin: function() {
-          $('nav').find('h1, p, small').css({
-            opacity: 0
-          })
-          $('.right-inner').find('li, .social i').css({
-            opacity: 0
-          });
-        },
-        complete: function() {
-          $('.right-inner').css({
-            width: 0
-          });
-        }
-      });
-
-    } else {
-      $(this)
-        .addClass('open')
-        .find('i')
-        .addClass('glyphicon-remove')
-        .removeClass('glyphicon-menu-hamburger');
-
-      $.Velocity.RunSequence(menuOpen)
-    }
-  });
+function resetnav(){
+  $('.hamb').removeClass('open');
+  $('.hamb i').addClass('glyphicon-menu-hamburger')
+  $('.hamb i').removeClass('glyphicon-remove');
+  $('.hamb').show();
+  $('.nav').hide();
 }
+// function navigation(){
+//   // $.Velocity.mock = 2;
+//
+//   var menuOpen = [{
+//     elements: $('.nav'),
+//     properties: {
+//       height: ['100%', 0],
+//       width: ['100%', 0],
+//       minHeight: '40rem'
+//     },
+//     options: {
+//       duration: 200
+//     }
+//   }, {
+//     elements: $('.right-inner'),
+//     properties: {
+//       width: '100%'
+//     },
+//     options: {
+//       duration: 250,
+//       complete: function() {
+//         $('.right-inner')
+//           .find('li').each(function(i) {
+//             $(this).velocity({
+//               opacity: 1
+//             }, {
+//               delay: i * 50
+//             });
+//           })
+//       }
+//     }
+//   }];
+//
+//   $(document.body).on('click', '.hamb',
+//   function() {
+//
+//     if ($(this).hasClass('open')) {
+//       $(this)
+//         .removeClass('open')
+//         .find('i')
+//         .addClass('glyphicon-menu-hamburger')
+//         .removeClass('glyphicon-remove');
+//
+//       $('nav').velocity({
+//         height: 0,
+//         width: 0,
+//         minHeight: 0
+//       }, {
+//         duration: 250,
+//         begin: function() {
+//           $('nav').find('h1, p, small').css({
+//             opacity: 0
+//           })
+//           $('.right-inner').find('li, .social i').css({
+//             opacity: 0
+//           });
+//         },
+//         complete: function() {
+//           $('.right-inner').css({
+//             width: 0
+//           });
+//         }
+//       });
+//
+//     } else {
+//       $(this)
+//         .addClass('open')
+//         .find('i')
+//         .addClass('glyphicon-remove')
+//         .removeClass('glyphicon-menu-hamburger');
+//
+//       $.Velocity.RunSequence(menuOpen)
+//     }
+//   });
+// }
 ;( function( window ) {
 
   'use strict';
@@ -129,6 +136,8 @@ function navigation(){
 })( window );
 
 app.controller('home-controller', ['$scope', function($scope) {
+  $('.hamb').hide();
+  $('.nav').hide();
   $scope.eatthis=thisisme[0];
   window.setInterval(function(){
     if(thisismeiterator===thisisme.length-1){
@@ -142,6 +151,7 @@ app.controller('home-controller', ['$scope', function($scope) {
   },3000);
 }]);
 app.controller('work-controller', [function() {
+  resetnav();
   [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
     new DotNav( nav, {
       callback : function( idx ) {
@@ -149,9 +159,10 @@ app.controller('work-controller', [function() {
       }
     } );
   } );
-  navigation();
+  // navigation();
 }]);
 app.controller('about-controller', [function() {
+  resetnav();
   [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
     new DotNav( nav, {
       callback : function( idx ) {
@@ -159,8 +170,8 @@ app.controller('about-controller', [function() {
       }
     } );
   } );
-  navigation();
+  // navigation();
 }]);
 app.controller('contact-controller', [function() {
-  navigation();
+  resetnav();
 }]);
