@@ -11,81 +11,34 @@ function resetnav(){
   $('.hamb').show();
   $('.nav').hide();
 }
-// function navigation(){
-//   // $.Velocity.mock = 2;
-//
-//   var menuOpen = [{
-//     elements: $('.nav'),
-//     properties: {
-//       height: ['100%', 0],
-//       width: ['100%', 0],
-//       minHeight: '40rem'
-//     },
-//     options: {
-//       duration: 200
-//     }
-//   }, {
-//     elements: $('.right-inner'),
-//     properties: {
-//       width: '100%'
-//     },
-//     options: {
-//       duration: 250,
-//       complete: function() {
-//         $('.right-inner')
-//           .find('li').each(function(i) {
-//             $(this).velocity({
-//               opacity: 1
-//             }, {
-//               delay: i * 50
-//             });
-//           })
-//       }
-//     }
-//   }];
-//
-//   $(document.body).on('click', '.hamb',
-//   function() {
-//
-//     if ($(this).hasClass('open')) {
-//       $(this)
-//         .removeClass('open')
-//         .find('i')
-//         .addClass('glyphicon-menu-hamburger')
-//         .removeClass('glyphicon-remove');
-//
-//       $('nav').velocity({
-//         height: 0,
-//         width: 0,
-//         minHeight: 0
-//       }, {
-//         duration: 250,
-//         begin: function() {
-//           $('nav').find('h1, p, small').css({
-//             opacity: 0
-//           })
-//           $('.right-inner').find('li, .social i').css({
-//             opacity: 0
-//           });
-//         },
-//         complete: function() {
-//           $('.right-inner').css({
-//             width: 0
-//           });
-//         }
-//       });
-//
-//     } else {
-//       $(this)
-//         .addClass('open')
-//         .find('i')
-//         .addClass('glyphicon-remove')
-//         .removeClass('glyphicon-menu-hamburger');
-//
-//       $.Velocity.RunSequence(menuOpen)
-//     }
-//   });
-// }
+function isScrolledIntoView(el, param) {
+  var hT = $('#'+el).offset().top,
+      hH = $('#'+el).outerHeight(),
+      wH = $(window).height(),
+      wS = $(param).scrollTop();
+  if (wS+1 > (hT+hH-wH)){
+      return [{"tf": true,"elem": el}];
+  }
+}
+function scrollscroll(){
+  $(window).scroll(function(){
+    var bool=[];
+    var param=this;
+    var active;
+    $('.full').each(function(i, obj) {
+    bool[i]= isScrolledIntoView(obj.id,param);
+    if(bool[i]!=null){
+      if(bool[i][0].tf==true){
+        active=i;
+      }
+    }
+    });
+    var checkActive = $('#'+bool[active][0].elem+'-click').hasClass('current');
+    if(!checkActive){
+      $('#'+bool[active][0].elem+'-click').click();
+    }
+  });
+}
 ;( function( window ) {
 
   'use strict';
@@ -150,8 +103,16 @@ app.controller('home-controller', ['$scope', function($scope) {
     $('.thisisme').animateCss('fadeIn');
   },3000);
 }]);
-app.controller('work-controller', [function() {
+app.controller('work-controller', ['$scope','$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
+  scrollscroll();
   resetnav();
+  $scope.scrollTo = function(id) {
+      var old = $location.hash();
+      $location.hash(id);
+      $anchorScroll();
+      //reset to old to keep any additional routing logic from kicking in
+      $location.hash(old);
+  };
   [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
     new DotNav( nav, {
       callback : function( idx ) {
@@ -159,18 +120,24 @@ app.controller('work-controller', [function() {
       }
     } );
   } );
-  // navigation();
 }]);
-app.controller('about-controller', [function() {
+app.controller('about-controller', ['$scope','$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
+  scrollscroll();
   resetnav();
+  $scope.scrollTo = function(id) {
+      var old = $location.hash();
+      $location.hash(id);
+      $anchorScroll();
+      //reset to old to keep any additional routing logic from kicking in
+      $location.hash(old);
+  };
   [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
     new DotNav( nav, {
       callback : function( idx ) {
-        // console.log( idx );
+        //console.log( idx );
       }
     } );
   } );
-  // navigation();
 }]);
 app.controller('contact-controller', [function() {
   resetnav();

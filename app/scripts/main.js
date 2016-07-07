@@ -15,21 +15,6 @@ app.config(function ($routeProvider) {
 		.when('/work', {
 			templateUrl: 'views/work.html'
 		})
-		// .when('/register', {
-		// 	templateUrl: 'assets/views/register.html'
-		// })
-		// .when('/sponsors', {
-    //   controller: 'SponsorController',
-		// 	templateUrl: 'assets/views/sponsors.html'
-		// })
-    // .when('/events/:slug', {
-    //   controller: 'TemplateController',
-    //   templateUrl: 'assets/views/eventtemplate.html'
-    // })
-    // .when('/news/:slug', {
-    //   controller: 'NewsTemplateController',
-    //   templateUrl: 'assets/views/newstemplate.html'
-    // })
     .otherwise({
       redirectTo: '/intro'
     });

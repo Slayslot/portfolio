@@ -1,13 +1,87 @@
 <section id="work-container" ng-controller="work-controller">
+  <h3 class="page-side-title">_Work</h3>
   <div class="dotstyle dotstyle-tooltip">
     <ul>
-      <li class="current"><a href="#">Trending Tweeps</a></li>
-      <li><a href="#">HeatSeeker</a></li>
-      <li><a href="#">AudioAddict</a></li>
-      <li><a href="#">Mozpacers</a></li>
-      <li><a href="#">Corona 2k16</a></li>
-      <li><a href="#">Personal Blog</a></li>
+      <li id="trending-click" ng-click="scrollTo('trending')" class="current"><a ng-click="scrollTo('trending')">Trending Tweeps</a></li>
+      <li id="heat-click" ng-click="scrollTo('heat')"><a ng-click="scrollTo('heat')" >HeatSeeker</a></li>
+      <li id="audio-click" ng-click="scrollTo('audio')"><a ng-click="scrollTo('audio')" >AudioAddict</a></li>
+      <li id="moz-click" ng-click="scrollTo('moz')"><a ng-click="scrollTo('moz')" >Mozpacers</a></li>
+      <li id="corona-click" ng-click="scrollTo('corona')"><a ng-click="scrollTo('corona')" >Corona 2k16</a></li>
+      <li id="blog-click" ng-click="scrollTo('blog')"><a ng-click="scrollTo('blog')" >Personal Blog</a></li>
       <li><!-- dummy dot --></li>
     </ul>
+  </div>
+  <div id="trending" class="full">
+    <div class="figure-container middle-earth text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <figure id="trending-image" class="work-image img-responsive">
+        <figcaption class="work-figcaption">
+          <a href="http://bit.ly/trendingtweeps">
+            <h1>Trending Tweeps</h1>
+            <h3>Stack: HTML5, CSS3, jQuery, Django</h3>
+          </a>
+        </figcaption>
+
+      </figure>
+    </div>
+  </div>
+  <div id="heat" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <figure id="heat-image" class="work-image img-responsive">
+        <figcaption class="work-figcaption">
+          <a href="/heatseeker">
+            <h1>HeatSeeker</h1>
+            <h3>Stack: Javascript, Unity</h3>
+          </a>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <div id="audio" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+    <figure id="audio-image" class="work-image img-responsive">
+      <figcaption class="work-figcaption">
+        <a href="http://bit.ly/audioaddict">
+          <h1>AudioAddict</h1>
+          <h3>Stack: HTML5, CSS3, jQuery, Django</h3>
+        </a>
+      </figcaption>
+    </figure>
+  </div>
+  </div>
+  <div id="moz" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <figure id="moz-image"class="work-image img-responsive">
+        <figcaption class="work-figcaption">
+          <a href="http://mozpacers.org/">
+            <h1>Mozpacers' Website</h1>
+            <h3>Stack: HTML5, CSS3, jQuery, Flask</h3>
+          </a>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <div id="corona" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+        <figure id="corona-image" class="work-image img-responsive">
+          <figcaption class="work-figcaption">
+            <a href="#">
+              <h1>Corona 2k16 Website</h1>
+              <h3>Stack: HTML5, CSS3, jQuery, Angular, Django</h3>
+            </a>
+          </figcaption>
+        </figure>
+    </div>
+  </div>
+  <div id="blog" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <figure id="blog-image" class="work-image img-responsive">
+        <figcaption class="work-figcaption">
+          <a href="/blog">
+            <h1>Slayslot's Blog</h1>
+            <h3>Stack: HTML5, CSS3, Javascript, Hexo</h3>
+          </a>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>

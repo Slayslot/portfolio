@@ -59,12 +59,50 @@ $mobile-height: 550px;
   -webkit-transform: translateY($yaxis);
   transform: translateY($yaxis);
 }
+@mixin middle-earth-h3 {
+  h3{
+    line-height: 150%;
+    @include media-min-width($mobile-width){
+      font-size: 1.4em;
+    }
+    @include media-min-width($tablet-width){
+      font-size: 1.7em;
+    }
+    @include media-min-width($desktop-width){
+      font-size: 1.9em;
+    }
+    @include media-min-width($desktop-width){
+      font-size: 2.1em;
+    }
+  }
+}
+@mixin middle-earth-h1 {
+  h1{
+    @include media-min-width($tablet-width){
+      font-size: 3.4em;
+    }
+    @include media-min-width($desktop-width){
+      font-size: 4.4em;
+    }
+    @include media-min-width($desktop-width){
+      font-size: 4.6em;
+    }
+  }
+}
+@mixin background-this($name) {
+  background-image: url(../images/#{$name});
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
 //fonts
 @import 'https://fonts.googleapis.com/css?family=Exo+2';
 //endfonts
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
+body{
+  overflow-x: hidden;
+}
 html,
 body {
   height: 100%;
@@ -73,17 +111,47 @@ body {
   background: $background-color;
 }
 /* Home */
-#home-container,#contact-container,#work-container,#about-container{
+.full, #home-container, #about-container, #work-container{
   width:100vw;
   height:100vh;
+  @include media-max-width(#{$tablet-width}-68px){
+    margin-bottom: 2em;
+  }
+  @include media-max-height(640px){
+    margin-bottom: 2em;
+  }
+}
+#trending{
+  @include media-max-width(#{$tablet-width}-68px){
+    margin-top: 3em;
+  }
 }
 /* Middle Earth*/
+.right-inner .middle-earth{
+  width:100vw;
+}
 .middle-earth{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width:100vw;
+  @include middle-earth-h3;
+  @include middle-earth-h1;
+}
+.middle-earth-after{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include middle-earth-h3;
+  @include middle-earth-h1;
+}
+.middle-earth ul,.middle-earth-after ul{
+  list-style: none;
+  padding-left:0;
+  li{
+    @include middle-earth-h3;
+  }
 }
 .myname{
   font-size:8em;
@@ -483,8 +551,12 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-  right: 0;
+  right: 1%;
   top: 40%;
+  z-index: 50;
+  @include media-max-width(#{$tablet-width}-1){
+    display: none;
+  }
 }
 
 .dotstyle li {
@@ -584,11 +656,18 @@ body {
 	transform: translateX(-120%) translateY(155%);
 	-webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
 	transition: transform 0.3s ease, opacity 0.3s ease;
+  @include media-max-width($desktop-width){
+    visibility: hidden;
+  }
 }
 
 .no-touch .dotstyle-tooltip ul:hover li.current a {
 	opacity: 0.2;
   text-decoration: none;
+  @include media-max-width($desktop-width){
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .dotstyle-tooltip ul li.current:hover a {
@@ -597,5 +676,166 @@ body {
 @for $i from 0 through 5{
   .dotstyle-tooltip li.current:nth-child(#{$i+1}) ~ li:last-child {
     @include transitiony(199%*$i);
+  }
+}
+/* Work */
+.work-image{
+  width:1008px;
+  height: 580px;
+  @include media-max-height(640px){
+    height: 500px;
+  }
+  @include media-max-height(540px){
+    height: 400px;
+  }
+}
+@media (min-width: $mobile-width) and (max-width: #{$tablet-width}-68px){
+  .work-image{
+  background-size: 500px auto !important;
+  background-position: center;
+  position: unset;
+  top: 0;
+  height: 300px;
+  }
+}
+@media (min-width: $mobile-width-2) and (max-width: #{$tablet-width}-68px){
+  .work-image{
+    background-size: 600px auto !important;
+  }
+}
+@media (min-width: 500px) and (max-width: #{$tablet-width}-68px){
+  .work-image{
+    background-size: 720px auto !important;
+  }
+}
+#trending-image{
+  @include background-this('trending.png');
+}
+#heat-image{
+  @include background-this('heat.png');
+}
+#audio-image{
+  @include background-this('audio.jpg');
+}
+#moz-image{
+  @include background-this('moz.png');
+}
+#corona-image{
+  @include background-this('trending.png');
+}
+#blog-image{
+  @include background-this('blog.png');
+}
+#blog{
+  @include media-max-width(#{$tablet-width}-68px){
+    margin-bottom: 0;
+  }
+  @include media-max-height(640px){
+    margin-bottom: 0;
+  }
+}
+.work-figcaption{
+  width:350px;
+  height:350px;
+  background-color: $text-color;
+  color: $background-color;
+  position: relative;
+  left: 0;
+  padding: 1.5em 1em;
+  a{
+    width:350px;
+    height:350px;
+    color:$text-color;
+    text-decoration: none;
+    @include media-max-width(#{$tablet-width}-68px){
+      width: 280px;
+      height: 280px;
+    }
+    @include media-max-height(640px){
+      height: 300px;
+      width:300px;
+    }
+    @include media-max-height(540px){
+      height: 280px;
+      width:280px;
+    }
+    h1, h3{
+      color: $background-color;
+      margin: 0;
+    }
+    h1{
+      font-size: 3em;
+      @include media-max-width(#{$tablet-width}-68px){
+        font-size: 2em;
+      }
+      @include media-min-width(#{$tablet-width}-67px){
+        font-size: 2.4em;
+      }
+      @include media-max-height(540px){
+        font-size: 1.8em;
+      }
+    }
+    h3{
+      font-size: 1.5em;
+      position: relative;
+      top: 6em;
+      @include media-max-width(#{$tablet-width}-68px){
+        font-size: 1.1em;
+        top: 9em;
+      }
+      @include media-min-width(#{$tablet-width}-67px){
+        font-size: 1.4em;
+        top: 10em;
+      }
+      @include media-max-height(640px){
+        font-size: 1.3em;
+        top: 6em;
+      }
+      @include media-max-height(540px){
+        font-size: 1.2em;
+        top: 7em;
+      }
+    }
+  }
+  @include media-max-width(#{$tablet-width}-68px){
+    width: 280px;
+    height: 280px;
+    position: relative;
+    left: 0;
+    top: 15em;
+    padding: 1em 0.5em;
+  }
+  @include media-min-width(#{$tablet-width}-67px){
+    top: 18em;
+  }
+  @include media-min-width($tablet-width){
+    left: -5em;
+  }
+  @include media-min-width(1200px){
+    left: -10em;
+  }
+  @include media-min-width(1500px){
+    top: 23em;
+  }
+  @include media-max-height(640px){
+    height: 300px;
+    width:300px;
+    top: 15em;
+  }
+  @include media-max-height(540px){
+    height: 280px;
+    width:280px;
+    top: 10em;
+  }
+}
+.figure-container{
+  @include media-max-width(#{$tablet-width}-68px){
+    position: unset;
+    top: 0;
+    left: 0;
+    -webkit-transform: unset;
+    transform: unset;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

@@ -1,13 +1,66 @@
 <section id="about-container" ng-controller="about-controller">
+  <h3 class="page-side-title">_About</h3>
   <div class="dotstyle dotstyle-tooltip">
     <ul>
-      <li class="current"><a href="#">Intro</a></li>
-      <li><a href="#">Vouched Mozillian</a></li>
-      <li><a href="#">jQuery HTML Style Guide</a></li>
-      <li><a href="#">A book & comic book reader</a></li>
-      <li><a href="#">A Hardcore Gamer</a></li>
-      <li><a href="#">Movie & TV-Series Buff</a></li>
+      <li id="intro-click" ng-click="scrollTo('intro')" class="current"><a ng-click="scrollTo('intro')">Intro</a></li>
+      <li id="vouched-click" ng-click="scrollTo('vouched')"><a ng-click="scrollTo('vouched')" >Vouched Mozillian</a></li>
+      <li id="jquery-click" ng-click="scrollTo('jquery')"><a ng-click="scrollTo('jquery')">jQuery HTML Style Guide</a></li>
+      <li id="reader-click" ng-click="scrollTo('reader')"><a ng-click="scrollTo('reader')">A book & comic book reader</a></li>
+      <li id="gamer-click" ng-click="scrollTo('gamer')"><a ng-click="scrollTo('gamer')">A Hardcore Gamer</a></li>
+      <li id="basketball-click" ng-click="scrollTo('basketball')"><a ng-click="scrollTo('basketball')">Basketballer</a></li>
       <li><!-- dummy dot --></li>
     </ul>
+  </div>
+  <div id="intro" class="full">
+    <div class="figure-container middle-earth text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <h1>Hi, my name is Nikhil Handa</h1>
+      <ul>
+        <li><h3>I'm Fascinated by Designing and Programming alike.</h3></li>
+        <li><h3>I aspire to gain knowledge of the most complex systems.</h3></li>
+        <li><h3>An extremist who sees what he does to the end.</h3></li>
+      </ul>
+    </div>
+  </div>
+  <div id="vouched" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <h1>I'm a vouched mozillian</h1>
+      <ul>
+        <li><h3>I support Open Web Standards and I'm a vouched <a href="https://mozillians.org/en-US/u/slayslot/">Mozillian</a> contributing in the <a href="https://wiki.mozilla.org/Mozilla_Delhi/Technical_Contributors">Mozilla Delhi Community</a></h3></li>
+        <li><h3>I actively contribute to <a href="https://github.com/Mozpacers">Mozpacers' Projects</a></h3></li>
+        <li><h3>I actively find and fix bugs on <a href="https://bugzilla.mozilla.org/buglist.cgi?query_format=advanced&emailtype1=exact&emailassigned_to1=1&email1=nikhil.handa19%40gmail.com&list_id=13054255">Bugzilla</a></h3></li>
+      </ul>
+    </div>
+  </div>
+  <div id="jquery" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <h1>I made jQuery's HTML style guide</h1>
+      <h3>I actively worked with jQuery to make their new <a href="http://contribute.jquery.org/html">HTML Style Guide</a></h3>
+    </div>
+  </div>
+  <div id="reader" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <h1>I love to read</h1>
+      <h3>I like to read alot in my free time, be it quora, a book or graphic novels/comics.</h3>
+      <h3>You can find what I'm upto, with my reading, on my <a href="https://www.goodreads.com/user/show/39591357-nikhil-handa">Goodreads account</a></h3>
+    </div>
+  </div>
+  <div id="gamer" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <h1>I'm a hardcore gamer</h1>
+      <ul>
+        <li><h3>I love gaming and everything about it you can catch that with my alias(Slays-a-lot). I also have attempted to make my <a href="http://nikhilhanda.com/heatseeker">own game</a></h3></li>
+        <li><h3>I've also actively worked as a <a href=" http://gamebanana.com/members/submissions/reviews/1376016">Game Reviewer in the past</a></h3></li>
+        <li><h3>Find me on <a href="http://steamcommunity.com/id/slayslot/">Steam</a> and we can rock some games together.</h3></li>
+    </div>
+  </div>
+  <div id="basketball" class="full">
+    <div class="figure-container middle-earth-after text-center col-xs-12 col-sm-10 col-md-10 col-lg-8">
+      <h1>I'm a Basketball Player</h1>
+      <ul>
+        <li><h3>I've been playing, on and off, since the past 8 years.</h3></li>
+        <li><h3>I was the captain of RISVK's Basketball Team.</h3></li>
+        <li><h3>I've won many tournaments along with my College and Schools Basketball Team.</h3></li>
+      </ul>
+    </div>
   </div>
 </section>
