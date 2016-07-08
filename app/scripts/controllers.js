@@ -1,13 +1,17 @@
 var thisisme = [
   'Front-end Developer',
   'UI/UX Developer',
-  'Basketball Player'
+  'Vouched Mozillian',
+  'Basketball Player',
+  'Mozpacer',
+  'Harcore Gamer',
+  'Movie/TV Series Buff'
 ]
 var thisismeiterator=0;
 function resetnav(){
   $('.hamb').removeClass('open');
-  $('.hamb i').addClass('glyphicon-menu-hamburger')
-  $('.hamb i').removeClass('glyphicon-remove');
+  $('.hamb i').addClass('icon-menu')
+  $('.hamb i').removeClass('icon-cancel');
   $('.hamb').show();
   $('.nav').hide();
 }
@@ -17,7 +21,7 @@ function isScrolledIntoView(el, param) {
       wH = $(window).height(),
       wS = $(param).scrollTop();
   if (wS+1 > (hT+hH-wH)){
-      return [{"tf": true,"elem": el}];
+      return [{'tf': true,'elem': el}];
   }
 }
 function scrollscroll(){
@@ -106,12 +110,18 @@ app.controller('home-controller', ['$scope', function($scope) {
 app.controller('work-controller', ['$scope','$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
   scrollscroll();
   resetnav();
+  $('.work-image').hover(function(){
+    $(this).find('i').animateCss('wobble');
+  });
   $scope.scrollTo = function(id) {
-      var old = $location.hash();
-      $location.hash(id);
-      $anchorScroll();
-      //reset to old to keep any additional routing logic from kicking in
-      $location.hash(old);
+      $(document.body).on('mouseover', '.dotstyle',
+        function() {
+          var old = $location.hash();
+          $location.hash(id);
+          $anchorScroll();
+          //reset to old to keep any additional routing logic from kicking in
+          $location.hash(old);
+      });
   };
   [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
     new DotNav( nav, {
@@ -125,11 +135,14 @@ app.controller('about-controller', ['$scope','$location', '$anchorScroll', funct
   scrollscroll();
   resetnav();
   $scope.scrollTo = function(id) {
-      var old = $location.hash();
-      $location.hash(id);
-      $anchorScroll();
-      //reset to old to keep any additional routing logic from kicking in
-      $location.hash(old);
+      $(document.body).on('mouseover', '.dotstyle',
+        function() {
+          var old = $location.hash();
+          $location.hash(id);
+          $anchorScroll();
+          //reset to old to keep any additional routing logic from kicking in
+          $location.hash(old);
+      });
   };
   [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
     new DotNav( nav, {
