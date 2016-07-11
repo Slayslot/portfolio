@@ -1,6 +1,6 @@
 var app = angular.module('myPortfolio', ['ngRoute']);
 
-app.config(function ($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     .when('/intro', {
       controller: 'home-controller',
@@ -18,7 +18,7 @@ app.config(function ($routeProvider) {
     .otherwise({
       redirectTo: '/intro'
     });
-});
+}]);
 $.fn.extend({
   animateCss: function (animationName) {
     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
