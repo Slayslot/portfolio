@@ -382,6 +382,7 @@ body {
   right: 0;
   z-index: 101;
   position: fixed;
+  cursor: pointer;
   &.open {
     color: $text-color;
   }
@@ -775,8 +776,8 @@ body {
 #moz-image{
   @include background-this('moz.png');
 }
-#corona-image{
-  @include background-this('trending.png');
+#saba-image{
+  @include background-this('saba.png');
 }
 #blog-image{
   @include background-this('blog.png');
