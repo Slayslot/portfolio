@@ -277,10 +277,16 @@ body {
   a{
     font-size: 3em;
     color: $text-color;
-    &:hover{
-      color: #337AB7;
-    }
   }
+}
+.socially-facebook:hover{
+  color: #3B5998;
+}
+.socially-twitter:hover{
+  color: #55ACEE;
+}
+.socially-linkedin:hover{
+  color: #007AB5;
 }
 /* Common button styles */
 .button {
