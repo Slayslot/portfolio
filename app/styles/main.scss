@@ -132,6 +132,12 @@ body {
     margin-bottom: 2em;
   }
 }
+#home-container{
+  background: url(../images/back.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left bottom;
+}
 #trending{
   @include media-max-width(#{$tablet-width}-68px){
     margin-top: 3em;

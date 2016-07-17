@@ -119,7 +119,7 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+gulp.task('clean', del.bind(null, ['.tmp']));
 
 gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   browserSync({

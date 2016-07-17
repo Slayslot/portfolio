@@ -4,7 +4,7 @@ var thisisme = [
   'Vouched Mozillian',
   'Basketball Player',
   'Mozpacer',
-  'Harcore Gamer',
+  'Hardcore Gamer',
   'Movie/TV Series Buff'
 ]
 var thisismeiterator=0;
