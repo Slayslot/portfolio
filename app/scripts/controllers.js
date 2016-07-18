@@ -8,40 +8,72 @@ var thisisme = [
   'Movie/TV Series Buff'
 ]
 var thisismeiterator=0;
+var Arr=[];
+var Arrayiterator=0;
+var aboutArray=[];
+var aboutArrayiterator=0;
 function resetnav(){
   $('.hamb').removeClass('open');
   $('.hamb i').addClass('icon-menu')
   $('.hamb i').removeClass('icon-cancel');
   $('.hamb').show();
   $('.nav').hide();
+  var Arr=[];
+  var Arrayiterator=0;
 }
-function isScrolledIntoView(el, param) {
-  var hT = $('#'+el).offset().top,
-      hH = $('#'+el).outerHeight(),
-      wH = $(window).height(),
-      wS = $(param).scrollTop();
-  if (wS+1 > (hT+hH-wH)){
-      return [{'tf': true,'elem': el}];
+function initDyan(){
+    $('.dotstyle ul li').each(function(){
+      Arr.push($(this).attr('id'));
+    });
+}
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  var dY= e.deltaY;
+  console.log(dY);
+  detectUpOrDown(dY);
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;
+}
+
+function preventDefaultForScrollKeys(e) {
+    console.log(e.keyCode);
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+          return false;
+    }
+}
+function detectUpOrDown(dY){
+  if(dY>0){
+    if(Arrayiterator!=Arr.length-1){
+      Arrayiterator++;
+      $('#'+Arr[Arrayiterator]).click();
+    }
+  }else{
+    if(Arrayiterator!=0){
+      Arrayiterator--;
+      $('#'+Arr[Arrayiterator]).click();
+    }
   }
 }
-function scrollscroll(){
-  $(window).scroll(function(){
-    var bool=[];
-    var param=this;
-    var active;
-    $('.full').each(function(i, obj) {
-    bool[i]= isScrolledIntoView(obj.id,param);
-    if(bool[i]!=null){
-      if(bool[i][0].tf==true){
-        active=i;
-      }
-    }
-    });
-    var checkActive = $('#'+bool[active][0].elem+'-click').hasClass('current');
-    if(!checkActive){
-      $('#'+bool[active][0].elem+'-click').click();
-    }
-  });
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null;
+    window.onwheel = null;
+    window.ontouchmove = null;
+    document.onkeydown = null;
 }
 ;( function( window ) {
 
@@ -108,20 +140,20 @@ app.controller('home-controller', ['$scope', function($scope) {
   },3000);
 }]);
 app.controller('work-controller', ['$scope','$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
-  scrollscroll();
   resetnav();
+  initDyan();
+  disableScroll();
   $('.work-image').hover(function(){
     $(this).find('i').animateCss('wobble');
   });
   $scope.scrollTo = function(id) {
-      $(document.body).on('mouseover', '.dotstyle',
-        function() {
           var old = $location.hash();
           $location.hash(id);
           $anchorScroll();
           //reset to old to keep any additional routing logic from kicking in
           $location.hash(old);
-      });
+          console.log(Arr.indexOf(''+id+'-click'));
+          Arrayiterator=Arr.indexOf(''+id+'-click');
   };
   [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
     new DotNav( nav, {
@@ -132,17 +164,17 @@ app.controller('work-controller', ['$scope','$location', '$anchorScroll', functi
   } );
 }]);
 app.controller('about-controller', ['$scope','$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
-  scrollscroll();
   resetnav();
+  initDyan();
+  disableScroll();
   $scope.scrollTo = function(id) {
-      $(document.body).on('mouseover', '.dotstyle',
-        function() {
           var old = $location.hash();
           $location.hash(id);
           $anchorScroll();
           //reset to old to keep any additional routing logic from kicking in
           $location.hash(old);
-      });
+          console.log(Arr.indexOf(''+id+'-click'));
+          Arrayiterator=Arr.indexOf(''+id+'-click');
   };
   [].slice.call( document.querySelectorAll( '.dotstyle > ul' ) ).forEach( function( nav ) {
     new DotNav( nav, {

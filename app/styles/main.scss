@@ -132,6 +132,9 @@ body {
     margin-bottom: 2em;
   }
 }
+#about-container,#work-container{
+  overflow: hidden;
+}
 #home-container{
   background: url(../images/back.png);
   background-repeat: no-repeat;
