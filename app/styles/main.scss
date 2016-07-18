@@ -132,9 +132,6 @@ body {
     margin-bottom: 2em;
   }
 }
-#about-container,#work-container{
-  overflow: hidden;
-}
 #home-container{
   background: url(../images/back.png);
   background-repeat: no-repeat;
@@ -625,7 +622,7 @@ body {
   right: 1%;
   top: 40%;
   z-index: 50;
-  @include media-max-width(#{$tablet-width}-1){
+  @include media-max-width(#{$desktop-width}-1){
     display: none;
   }
 }
