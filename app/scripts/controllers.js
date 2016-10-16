@@ -12,7 +12,7 @@ var thisismeiterator=0;
 function resetnav(hidethisfuck){
   $('.nav li').css('display','initial');
   $('.hamb').removeClass('open');
-  $('.hamb i').addClass('icon-menu')
+  $('.hamb i').addClass('icon-menu');
   $('.hamb i').removeClass('icon-cancel');
   $('.hamb').show();
   $('.nav').hide();
