@@ -48,7 +48,7 @@ function scrollscroll(){
     }
   });
 }
-;( function( window ) {
+( function( window ) {
 
   'use strict';
 
