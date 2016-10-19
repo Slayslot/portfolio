@@ -1,0 +1,15 @@
+<a class="hamb"><i class="icon-menu"></i>
+</a>
+<nav class="nav" role='navigation'>
+  <div class="right">
+    <div class="right-inner">
+      <ul class="contain middle-earth">
+        <li><a ui-sref="intro">Home</a></li>
+        <li><a href="nikhilhanda.pdf" target="_blank">Resume</a></li>
+        <li ng-class="{ 'active': main.active===0}"><a ui-sref="work">Work</a></li>
+        <li ng-class="{ 'active': main.active===1}"><a ui-sref="about">About</a></li>
+        <li ng-class="{ 'active': main.active===2}"><a ui-sref="contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

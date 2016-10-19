@@ -1,4 +1,5 @@
 {
+  "name": "myPortfolio",
   "private": true,
   "engines": {
     "node": ">=4"
@@ -18,7 +19,6 @@
     "del": "^1.1.1",
     "lodash": "~3.10.1",
     "gulp": "^3.9.0",
-
     "gulp-minify-css": "~1.2.1",
     "gulp-filter": "~3.0.1",
     "gulp-flatten": "~0.2.0",
@@ -37,7 +37,6 @@
     "gulp-sourcemaps": "~1.6.0",
     "gulp-sass": "~2.0.4",
     "gulp-angular-filesort": "~1.1.1",
-
     "gulp-autoprefixer": "^3.0.1",
     "gulp-babel": "^6.1.1",
     "gulp-cache": "^0.4.2",
@@ -49,8 +48,16 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-plumber": "^1.0.1",
     "gulp-useref": "^3.0.0",
+    "http-proxy-middleware": "~0.9.0",
     "main-bower-files": "^2.5.0",
-    "wiredep": "^2.2.2"
+    "wiredep": "^2.2.2",
+    "karma": "~0.13.10",
+    "karma-jasmine": "~0.3.6",
+    "karma-phantomjs-launcher": "~0.2.1",
+    "karma-angular-filesort": "~1.0.0",
+    "karma-coverage": "~0.5.2",
+    "karma-ng-html2js-preprocessor": "~0.2.0",
+    "phantomjs": "~1.9.18"
   },
   "eslintConfig": {
     "env": {
