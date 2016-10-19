@@ -1,22 +1,11 @@
 <section id="work-container">
-  <div class="dotstyle dotstyle-tooltip">
-    <ul>
-      <li id="trending-click" class="current"><a>Trending Tweeps</a></li>
-      <li id="heat-click" ><a>HeatSeeker</a></li>
-      <li id="audio-click" ><a>AudioAddict</a></li>
-      <li id="moz-click" ><a>Mozpacers</a></li>
-      <li id="saba-click" ><a>Saba Hotelware</a></li>
-      <li id="blog-click" ><a>Personal Blog</a></li>
-      <li><!-- dummy dot --></li>
-    </ul>
-  </div>
   <div id="{{view.id}}"
        class="full"
        ng-repeat="view in work.workViews">
     <div class="figure-container text-center col-xs-12 col-sm-10 col-md-10 col-lg-8"
          ng-class="{'middle-earth': $first, 'middle-earth-after': !$first}">
       <a href="{{view.anchor}}" target="_blank">
-        <figure id="{{view.id}}-image" class="work-image img-responsive">
+        <figure id="{{view.id}}-image" ng-mouseover="work.wobbleMe(view.id)" class="work-image img-responsive">
           <figcaption class="work-figcaption">
               <h1>{{view.title}}</h1>
               <h3>{{view.stack}}</h3>

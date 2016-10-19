@@ -7,7 +7,7 @@ angular
    var vm = this;
 
    vm.fetch = function(){
-     return aboutViews = [
+     return [
        {
          "id": "intro",
          "heading": "Hi, my name is Nikhil Handa",

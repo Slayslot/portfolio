@@ -6,22 +6,26 @@
     .controller('HomeController', HomeCtrlFunction);
 
   /** @ngInject */
-  function HomeCtrlFunction($scope) {
+  function HomeCtrlFunction(HomeService, AnimateService, $interval, $scope) {
     var vm = this;
+    var interval;
 
-    $('.hamb').hide();
-    $('.nav').hide();
-    vm.eatthis=thisisme[0];
-    window.setInterval(function(){
-      if(thisismeiterator===thisisme.length-1){
-        thisismeiterator=0;
-      }else{
-        thisismeiterator++;
-      }
-      vm.eatthis=thisisme[thisismeiterator];
-      $scope.$apply();
-      $('.thisisme').animateCss('fadeIn');
+    var data = HomeService.fetch();
+    vm.eatthis=data.me[data.iterator];
+    interval = $interval(function(){
+      if(data.iterator===data.me.length-1)
+        data.iterator=0;
+      else
+        data.iterator++;
+
+      vm.eatthis=data.me[data.iterator];
+      AnimateService.animateCss('fadeIn','.thisisme');
     },3000);
+
+    $scope.$on('$destroy',function(){
+      if(interval)
+        $interval.cancel(interval);
+    });
 
   }
 })();
