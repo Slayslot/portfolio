@@ -14,9 +14,7 @@
     .state('base-home', {
       abstract: true,
       url: '',
-      templateUrl: 'app/main/base.home.html',
-      controller: 'MainController',
-      controllerAs: 'main'
+      templateUrl: 'app/main/base.home.html'
     })
     .state('base-nav', {
       abstract: true,
@@ -35,9 +33,7 @@
     .state('contact', {
       url: '/contact',
       parent: 'base-nav',
-      templateUrl: 'app/views/contact.html',
-      controller: 'ContactController',
-      controllerAs: 'contact'
+      templateUrl: 'app/views/contact.html'
     })
     .state('about', {
       url: '/about',
