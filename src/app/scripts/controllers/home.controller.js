@@ -6,7 +6,7 @@
     .controller('HomeController', HomeCtrlFunction);
 
   /** @ngInject */
-  function HomeCtrlFunction(HomeService, AnimateService, $interval, $scope) {
+  function HomeCtrlFunction(HomeService, ProgressBarService, AnimateService, $interval, $scope) {
     var vm = this;
     var interval;
 
@@ -27,5 +27,6 @@
         $interval.cancel(interval);
     });
 
+    ProgressBarService.stop();
   }
 })();

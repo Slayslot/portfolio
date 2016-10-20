@@ -6,8 +6,9 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $state, $document) {
+  function MainController($scope, ProgressBarService, $state, $document) {
     var vm = this;
+
     $scope.$on('$viewContentLoaded', function(){
       vm.activeState = $state.current.name;
       if($state.current.name === 'work'){

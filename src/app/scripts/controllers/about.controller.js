@@ -6,7 +6,7 @@
     .controller('AboutController', AboutCtrlFunction);
 
   /** @ngInject */
-  function AboutCtrlFunction(AboutService, $sce) {
+  function AboutCtrlFunction(AboutService, ProgressBarService, $sce) {
     var vm = this;
 
     vm.aboutViews = AboutService.fetch();
@@ -17,5 +17,6 @@
       }
     }
 
+    ProgressBarService.stop();
   }
 })();

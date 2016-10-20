@@ -33,7 +33,9 @@
     .state('contact', {
       url: '/contact',
       parent: 'base-nav',
-      templateUrl: 'app/views/contact.html'
+      templateUrl: 'app/views/contact.html',
+      controller: 'ContactController',
+      controllerAs: 'contact'
     })
     .state('about', {
       url: '/about',

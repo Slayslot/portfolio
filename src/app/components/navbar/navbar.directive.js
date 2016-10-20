@@ -43,7 +43,6 @@
           hambi.removeClass('icon-menu');
           nav.css('display','unset');
           AnimateService.animateCss('slideInLeft','.nav');
-          // nav.animateCss('slideInLeft');
           nav.css('display', 'block');
           nav.css('height', '100%');
           nav.css('width', '100%');

@@ -3,7 +3,8 @@
 
   angular
     .module('myPortfolio', [
-        'ui.router'
+        'ui.router',
+        'ngProgress'
     ]);
 
 })();

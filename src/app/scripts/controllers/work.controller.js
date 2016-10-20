@@ -6,7 +6,7 @@
     .controller('WorkController', WorkCtrlFunction);
 
   /** @ngInject */
-  function WorkCtrlFunction(AnimateService, WorkService) {
+  function WorkCtrlFunction(AnimateService, WorkService, ProgressBarService) {
     var vm = this;
 
     vm.workViews = WorkService.fetch();
@@ -15,6 +15,8 @@
       var param='#'+id+'-image i';
       AnimateService.animateCss('wobble',param);
     }
+
+    ProgressBarService.stop();
 
   }
 })();

@@ -3,8 +3,10 @@ angular
    .service('AboutService', AboutServiceFunction);
 
  /** @ngInject */
- function AboutServiceFunction() {
+ function AboutServiceFunction(ProgressBarService) {
    var vm = this;
+   ProgressBarService.setPreloaderConfig();
+   ProgressBarService.load();
 
    vm.fetch = function(){
      return [
