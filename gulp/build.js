@@ -83,12 +83,16 @@ gulp.task('other', function () {
     return file.stat.isFile();
   });
 
+  gulp.src('src/fonts/**/*')
+    .pipe(gulp.dest('dist/fonts'))
+
   return gulp.src([
     path.join(conf.paths.src, '/**/*'),
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}')
   ])
     .pipe(fileFilter)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+
 });
 
 gulp.task('clean', function () {
