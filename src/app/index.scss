@@ -817,6 +817,21 @@ body {
     background-size: 720px auto !important;
   }
 }
+#ktcore-image{
+  @include background-this('ide.png');
+}
+#bold-image{
+  @include background-this('bold.png');
+}
+#vlcc-image{
+  @include background-this('vlcc.png');
+}
+#myaccount-image{
+  @include background-this('myaccount.png');
+}
+#hotel-image{
+  @include background-this('hotel.png');
+}
 #trending-image{
   @include background-this('trending.png');
 }
@@ -828,9 +843,6 @@ body {
 }
 #moz-image{
   @include background-this('moz.png');
-}
-#saba-image{
-  @include background-this('saba.png');
 }
 #blog-image{
   @include background-this('blog.png');
