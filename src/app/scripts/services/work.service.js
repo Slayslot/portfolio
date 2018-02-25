@@ -48,7 +48,7 @@ angular
        },
        {
          "id": "heat",
-         "anchor": "http://www.slayslot.github.io/heatseeker",
+         "anchor": "https://slayslot.github.io/heatseeker",
          "title": "HeatSeeker",
          "stack": "Stack: Javascript, Unity"
        },
